@@ -1,0 +1,71 @@
+acr = Acropolis
+air = Air
+alf = Alfheim
+ana = Anatolia
+arc = Archipelago
+are = Arena
+bam = Bamboo Grove
+bla = Black Sea
+blu = Blue Lagoon
+ely = Elysium
+ere = Erebus
+gho = Ghost Lake
+giz = Giza
+gol = Gold Rush
+hig = Highland
+iro = Iron Wood
+isl = Islands
+jot = Jotunheim
+ker = Kerlugar
+lan = Land Unknown
+mar = Marsh
+med = Mediterranean
+meg = Megalopolis
+mid = Midgard
+mir = Mirage
+mrk = Mirkwood
+mou = Mount Olympus
+mus = Muspellheim
+nil = Nile Shallows
+nom = Nomad
+oas = Oasis
+pea = Peach Blossom 
+riv = River Nile
+rst = River Styx
+sav = Savannah
+sea = Sea of Worms
+sil = Silk Road
+ste = Steppe
+tea = Team Migration
+tun = Tundra
+val = Valley of Kings
+vin = Vindlandsaga
+wat = Watering Hole
+yel = Yellow River
+
+aso = Aso Grasslands
+kii = Kii
+lno = Land Nomad
+oku = Okuchichibu
+sen = Senjogahara
+set = Setonaikai
+sna = Snake Dance
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,21 @@
+letreiro= 1
+
+logo_camp= champS4
+fase= ABC
+
+mapa= null
+gods= null,null
+
+placar_1= 0
+jogador_1= 
+pais_1= null
+gods_1= null
+maps_1= null
+
+placar_2= 0
+jogador_2= 
+pais_2= null
+gods_2= null
+maps_2= null
+cor1=azul
+cor2=vermelho

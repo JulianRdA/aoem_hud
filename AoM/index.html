@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Draft Manager</title>
+  <link rel="icon" href="assets/logos/logo2.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="gameInfo">
+    <div class="info" style="margin-bottom: 20px;">
+      <div class="section-title">Informações do Campeonato</div>
+
+      <div style="margin-bottom: 10px;">
+        <label for="logo_camp">Campeonato:</label><br>
+        <input type="text" id="logo_camp" placeholder="Nome do Campeonato" style="width: 100%; padding: 5px;">
+      </div>
+
+      <div style="margin-bottom: 10px;">
+        <label for="fase">Fase:</label><br>
+        <input type="text" id="fase" placeholder="Ex: Quartas de Final Winner - Md5" style="width: 100%; padding: 5px;">
+      </div>
+
+      <div style="margin-top: 20px;">
+        <input id="draftLink" type="text" placeholder="Link do draft de gods" style=" width: 70%; padding: 5px;">
+        <button onclick="importarDraftAoE2CM()" style="margin-top: 5px; margin-bottom: 8px;">Importar Gods</button>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <input id="draftLinkMapas" type="text" placeholder="Link do draft de mapas" style=" width: 70%; padding: 5px;">
+        <button onclick="importarDraftMapas()" style="margin-top: 5px; margin-bottom: 8px;">Importar Mapas</button>
+      </div>
+
+      <div style="margin-bottom: 10px; display: flex; gap: 10px;">
+        <div style="flex: 1;">
+          <label for="cor1">Cor Esquerda:</label><br>
+          <select id="cor1" style="width: 100%; padding: 5px;">
+            <option value="azul">Azul</option>
+            <option value="vermelho">Vermelho</option>
+            <option value="amarelo">Amarelo</option>
+            <option value="verde">Verde</option>
+            <option value="ciano">Ciano</option>
+            <option value="rosa">Rosa</option>
+            <option value="laranja">Laranja</option>
+            <option value="magenta">Magenta</option>
+            <option value="verdeagua">Verde Agua</option>
+            <option value="salmao">Salmao</option>
+            <option value="roxo">Roxo</option>
+            <option value="cinza">Cinza</option>
+          </select>
+        </div>
+        <div style="flex: 1;">
+          <label for="cor2">Cor Direita:</label><br>
+          <select id="cor2" style="width: 100%; padding: 5px;">
+            <option value="vermelho">Vermelho</option>
+            <option value="azul">Azul</option>
+            <option value="amarelo">Amarelo</option>
+            <option value="verde">Verde</option>
+            <option value="ciano">Ciano</option>
+            <option value="rosa">Rosa</option>
+            <option value="laranja">Laranja</option>
+            <option value="magenta">Magenta</option>
+            <option value="verdeagua">Verde Agua</option>
+            <option value="salmao">Salmao</option>
+            <option value="roxo">Roxo</option>
+            <option value="cinza">Cinza</option>
+          </select>
+        </div>
+      </div>
+
+
+      <div style="margin-bottom: 10px;">
+        <label for="letreiro">Letreiro:</label><br>
+        <select id="letreiro" style="width: 100%; padding: 5px;">
+          <option value="1">Player 1 | Player 2</option>
+          <option value="2">Player 2 | Player 1</option>
+        </select>
+      </div>
+
+
+
+      <div class="salvlimp">
+        <button onclick="salvarDados()">Salvar Dados</button>
+        <button onclick="limparDados()">Limpar Dados</button>
+      </div>
+
+    </div>
+
+    <div class="resultado-partida">
+      <h3 class="section-title">Informações da Partida</h3>
+      <div style="margin-bottom: 10px;">
+        <label for="mapaSelect">Mapa:</label><br>
+        <select id="mapaSelect" style="width: 100%; padding: 5px;">
+          <option value="null" title="Selecione um Mapa">Selecione um Mapa</option>
+          <option value="Random" title="Mapa aleatório">Random</option>
+          <option value="Acropolis" title="Acropolis">Acropolis</option>
+          <option value="Alfheim" title="Alfheim">Alfheim</option>
+          <option value="Anatolia" title="Anatolia">Anatolia</option>
+          <option value="Air" title="Air">Air</option>
+          <option value="Arena" title="Arena">Arena</option>
+          <option value="Aso Grasslands" title="Aso Grasslands">Aso Grasslands</option>
+          <option value="Bamboo Grove" title="Bamboo Grove">Bamboo Grove</option>
+          <option value="Archipelago" title="Archipelago">Archipelago</option>
+          <option value="Blue Lagoon" title="Blue Lagoon">Blue Lagoon</option>
+          <option value="Elysium" title="Elysium">Elysium</option>
+          <option value="Erebus" title="Erebus">Erebus</option>
+          <option value="Ghost Lake" title="Ghost Lake">Ghost Lake</option>
+          <option value="Giza" title="Giza">Giza</option>
+          <option value="Gold Rush" title="Gold Rush">Gold Rush</option>
+          <option value="Highland" title="Highland">Highland</option>
+          <option value="Iron Wood" title="Iron Wood">Iron Wood</option>
+          <option value="Islands" title="Islands">Islands</option>
+          <option value="Jotunheim" title="Jotunheim">Jotunheim</option>
+          <option value="Kerlaugar" title="Kerlaugar">Kerlaugar</option>
+          <option value="Kii" title="Kii">Kii</option>
+          <option value="Land Nomad" title="Land Nomad">Land Nomad</option>
+          <option value="Land Unknown" title="Land Unknown">Land Unknown</option>
+          <option value="Marsh" title="Marsh">Marsh</option>
+          <option value="Mediterranean" title="Mediterranean">Mediterranean</option>
+          <option value="Megalopolis" title="Megalopolis">Megalopolis</option>
+          <option value="Midgard" title="Midgard">Midgard</option>
+          <option value="Mirage" title="Mirage">Mirage</option>
+          <option value="Mirkwood" title="Mirkwood">Mirkwood</option>
+          <option value="Mount Olympus" title="Mount Olympus">Mount Olympus</option>
+          <option value="Muspellheim" title="Muspellheim">Muspellheim</option>
+          <option value="Nile Shallows" title="Nile Shallows">Nile Shallows</option>
+          <option value="Nomad" title="Nomad">Nomad</option>
+          <option value="Oasis" title="Oasis">Oasis</option>
+          <option value="Okuchichibu" title="Okuchichibu">Okuchichibu</option>
+          <option value="Peach Blossom Land" title="Peach Blossom Land">Peach Blossom Land</option>
+          <option value="River Nile" title="River Nile">River Nile</option>
+          <option value="River Styx" title="River Styx">River Styx</option>
+          <option value="Savannah" title="Savannah">Savannah</option>
+          <option value="Sea of Worms" title="Sea of Worms">Sea of Worms</option>
+          <option value="Senjogahara" title="Senjogahara">Senjogahara</option>
+          <option value="Setonaikai" title="Setonaikai">Setonaikai</option>
+          <option value="Silk Road" title="Silk Road">Silk Road</option>
+          <option value="Snake Dance" title="Snake Dance">Snake Dance</option>
+          <option value="Steppe" title="Steppe">Steppe</option>
+          <option value="Team Migration" title="Team Migration">Team Migration</option>
+          <option value="Tundra" title="Tundra">Tundra</option>
+          <option value="Valley of Kings" title="Valley of Kings">Valley of Kings</option>
+          <option value="Vindlandsaga" title="Vindlandsaga">Vindlandsaga</option>
+          <option value="Watering Hole" title="Watering Hole">Watering Hole</option>
+          <option value="Yellow River" title="Yellow River">Yellow River</option>
+        </select>
+      </div>
+
+      <div class="versus">
+        <div class="linha-labels">
+          <label class="versusSelect1" for="versusSelect1">God 1:</label>
+          <label class="versusSelect2" for="versusSelect2">God 2:</label>
+        </div>
+        <div class="linha-selects">
+          <select id="versusSelect1" style="width: 100%; padding: 5px;">
+            <option value="null">Selecione um Deus</option>
+            <option value="amaterasu_1">Amaterasu</option>
+            <option value="kronos_1">Cronos</option>
+            <option value="freyr_1">Frey</option>
+            <option value="fuxi_1">Fuxi</option>
+            <option value="Gaia_1">Gaia</option>
+            <option value="hades_1">Hades</option>
+            <option value="isis_1">Isis</option>
+            <option value="loki_1">Loki</option>
+            <option value="nuwa_1">Nuwa</option>
+            <option value="odin_1">Odin</option>
+            <option value="poseidon_1">Poseidon</option>
+            <option value="ra_1">Ra</option>
+            <option value="set_1">Set</option>
+            <option value="shennong_1">Shennong</option>
+            <option value="susanoo_1">Susanoo</option>
+            <option value="thor_1">Thor</option>
+            <option value="tsukuyomi_1">Tsukuyomi</option>
+            <option value="oranos_1">Urano</option>
+            <option value="zeus_1">Zeus</option>
+          </select>
+          <select id="versusSelect2" style="width: 100%; padding: 5px;">
+            <option value="null">Selecione um Deus</option>
+            <option value="amaterasu_2">Amaterasu</option>
+            <option value="kronos_2">Cronos</option>
+            <option value="freyr_2">Frey</option>
+            <option value="fuxi_2">Fuxi</option>
+            <option value="Gaia_2">Gaia</option>
+            <option value="hades_2">Hades</option>
+            <option value="isis_2">Isis</option>
+            <option value="loki_2">Loki</option>
+            <option value="nuwa_2">Nuwa</option>
+            <option value="odin_2">Odin</option>
+            <option value="poseidon_2">Poseidon</option>
+            <option value="ra_2">Ra</option>
+            <option value="set_2">Set</option>
+            <option value="shennong_2">Shennong</option>
+            <option value="susanoo_2">Susanoo</option>
+            <option value="thor_2">Thor</option>
+            <option value="tsukuyomi_2">Tsukuyomi</option>
+            <option value="oranos_2">Urano</option>
+            <option value="zeus_2">Zeus</option>
+          </select>
+        </div>
+        <div class="linha-botao">
+          <button class="jogadorv1" onclick="registrarResultado(1)">Jogador 1 Venceu</button>
+          <button class="jogadorv2" onclick="registrarResultado(2)">Jogador 2 Venceu</button>
+        </div>
+        <div class="linha-placar">
+          <span id="placar1">0</span>
+          <span id="placar2">0</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="scoreboard">
+    <!-- JOGADOR 1 -->
+    <div class="player1">
+      <div class="nome-pais">
+        <input type="text" id="jogador1" placeholder="Nome Jogador 1"
+          oninput="atualizarNomesDosBotoes(); atualizarLetreiroComNomes();">
+        <select id="pais1" onchange="atualizarBandeira('pais1', 'bandeira1')">
+          <option value="null">Selecione um País</option>
+          <option value="africadosul">Africa do Sul</option>
+          <option value="albania">Albania</option>
+          <option value="alemanha">Alemanha</option>
+          <option value="andorra">Andorra</option>
+          <option value="argentina">Argentina</option>
+          <option value="armenia">Armenia</option>
+          <option value="australia">Australia</option>
+          <option value="austria">Austria</option>
+          <option value="azerbaijao">Azerbaijao</option>
+          <option value="bangladesh">Bangladesh</option>
+          <option value="barbados">Barbados</option>
+          <option value="belgica">Belgica</option>
+          <option value="bielorrussia">Bielorrussia</option>
+          <option value="bolivia">Bolivia</option>
+          <option value="bosnia">Bosnia</option>
+          <option value="brasil">Brasil</option>
+          <option value="bulgaria">Bulgaria</option>
+          <option value="canada">Canada</option>
+          <option value="cazaquistao">Cazaquistao</option>
+          <option value="chequia">Chequia</option>
+          <option value="Chile">Chile</option>
+          <option value="China">China</option>
+          <option value="Chipre">Chipre</option>
+          <option value="colombia">Colombia</option>
+          <option value="coreia">Coreia</option>
+          <option value="costarica">Costa Rica</option>
+          <option value="croacia">Croacia</option>
+          <option value="cuba">Cuba</option>
+          <option value="dinamarca">Dinamarca</option>
+          <option value="egito">Egito</option>
+          <option value="elsalvador">El Salvador</option>
+          <option value="equador">Equador</option>
+          <option value="escocia">Escocia</option>
+          <option value="eslovaquia">Eslovaquia</option>
+          <option value="eslovenia">Eslovenia</option>
+          <option value="espanha">Espanha</option>
+          <option value="estadosunidos">Estados Unidos</option>
+          <option value="estonia">Estonia</option>
+          <option value="finlandia">Finlandia</option>
+          <option value="franca">Franca</option>
+          <option value="gales">Gales</option>
+          <option value="georgia">Georgia</option>
+          <option value="grecia">Grecia</option>
+          <option value="guatemala">Guatemala</option>
+          <option value="guiana">Guiana</option>
+          <option value="haiti">Haiti</option>
+          <option value="holanda">Holanda</option>
+          <option value="honduras">Honduras</option>
+          <option value="hongkong">Hong Kong</option>
+          <option value="hungria">Hungria</option>
+          <option value="india">India</option>
+          <option value="indonesia">Indonesia</option>
+          <option value="inglaterra">Inglaterra</option>
+          <option value="ira">Ira</option>
+          <option value="irlanda">Irlanda</option>
+          <option value="irlandanorte">Irlanda do Norte</option>
+          <option value="islandia">Islandia</option>
+          <option value="israel">Israel</option>
+          <option value="italia">Italia</option>
+          <option value="jamaica">Jamaica</option>
+          <option value="japao">Japao</option>
+          <option value="letonia">Letonia</option>
+          <option value="liechtenstein">Liechtenstein</option>
+          <option value="lituania">Lituania</option>
+          <option value="luxemburgo">Luxemburgo</option>
+          <option value="macedonia">Macedonia</option>
+          <option value="malta">Malta</option>
+          <option value="mexico">Mexico</option>
+          <option value="moldavia">Moldavia</option>
+          <option value="monaco">Monaco</option>
+          <option value="mongolia">Mongolia</option>
+          <option value="montenegro">Montenegro</option>
+          <option value="nicaragua">Nicaragua</option>
+          <option value="noruega">Noruega</option>
+          <option value="novazelandia">Nova Zelandia</option>
+          <option value="panama">Panama</option>
+          <option value="paquistao">Paquistao</option>
+          <option value="paraguai">Paraguai</option>
+          <option value="peru">Peru</option>
+          <option value="polonia">Polonia</option>
+          <option value="portugal">Portugal</option>
+          <option value="reinounido">Reino Unido</option>
+          <option value="republicadominicana">Republica Dominicana</option>
+          <option value="romenia">Romenia</option>
+          <option value="russia">Russia</option>
+          <option value="sanmarino">San Marino</option>
+          <option value="servia">Servia</option>
+          <option value="singapura">Singapura</option>
+          <option value="suecia">Suecia</option>
+          <option value="suica">Suica</option>
+          <option value="suriname">Suriname</option>
+          <option value="tailandia">Tailandia</option>
+          <option value="taiwan">Taiwan</option>
+          <option value="trindade">Trindade e Tobago</option>
+          <option value="tunisia">Tunisia</option>
+          <option value="turquia">Turquia</option>
+          <option value="ucrania">Ucrania</option>
+          <option value="uruguai">Uruguai</option>
+          <option value="venezuela">Venezuela</option>
+        </select>
+        <img id="bandeira1" class="bandeira" src="" alt="">
+      </div>
+
+      <button onclick="limparMarcacoes(1)">Limpar Draft</button>
+
+      <div class="picks-bans">
+        <div class="section-title">Gods</div>
+        <div class="item-grid god-grid" data-jogador="1"></div>
+
+        <div class="section-title">Maps</div>
+        <div class="item-grid map-grid" data-jogador="1"></div>
+
+
+      </div>
+    </div>
+
+    <!-- JOGADOR 2 -->
+    <div class="player2">
+      <div class="nome-pais">
+        <input type="text" id="jogador2" placeholder="Nome Jogador 2"
+          oninput="atualizarNomesDosBotoes(); atualizarLetreiroComNomes();">
+        <select id="pais2" onchange="atualizarBandeira('pais2', 'bandeira2')">
+          <option value="null">Selecione um País</option>
+          <option value="africadosul">Africa do Sul</option>
+          <option value="albania">Albania</option>
+          <option value="alemanha">Alemanha</option>
+          <option value="andorra">Andorra</option>
+          <option value="argentina">Argentina</option>
+          <option value="armenia">Armenia</option>
+          <option value="australia">Australia</option>
+          <option value="austria">Austria</option>
+          <option value="azerbaijao">Azerbaijao</option>
+          <option value="bangladesh">Bangladesh</option>
+          <option value="barbados">Barbados</option>
+          <option value="belgica">Belgica</option>
+          <option value="bielorrussia">Bielorrussia</option>
+          <option value="bolivia">Bolivia</option>
+          <option value="bosnia">Bosnia</option>
+          <option value="brasil">Brasil</option>
+          <option value="bulgaria">Bulgaria</option>
+          <option value="canada">Canada</option>
+          <option value="cazaquistao">Cazaquistao</option>
+          <option value="chequia">Chequia</option>
+          <option value="Chile">Chile</option>
+          <option value="China">China</option>
+          <option value="Chipre">Chipre</option>
+          <option value="colombia">Colombia</option>
+          <option value="coreia">Coreia</option>
+          <option value="costarica">Costa Rica</option>
+          <option value="croacia">Croacia</option>
+          <option value="cuba">Cuba</option>
+          <option value="dinamarca">Dinamarca</option>
+          <option value="egito">Egito</option>
+          <option value="elsalvador">El Salvador</option>
+          <option value="equador">Equador</option>
+          <option value="escocia">Escocia</option>
+          <option value="eslovaquia">Eslovaquia</option>
+          <option value="eslovenia">Eslovenia</option>
+          <option value="espanha">Espanha</option>
+          <option value="estadosunidos">Estados Unidos</option>
+          <option value="estonia">Estonia</option>
+          <option value="finlandia">Finlandia</option>
+          <option value="franca">Franca</option>
+          <option value="gales">Gales</option>
+          <option value="georgia">Georgia</option>
+          <option value="grecia">Grecia</option>
+          <option value="guatemala">Guatemala</option>
+          <option value="guiana">Guiana</option>
+          <option value="haiti">Haiti</option>
+          <option value="holanda">Holanda</option>
+          <option value="honduras">Honduras</option>
+          <option value="hongkong">Hong Kong</option>
+          <option value="hungria">Hungria</option>
+          <option value="india">India</option>
+          <option value="indonesia">Indonesia</option>
+          <option value="inglaterra">Inglaterra</option>
+          <option value="ira">Ira</option>
+          <option value="irlanda">Irlanda</option>
+          <option value="irlandanorte">Irlanda do Norte</option>
+          <option value="islandia">Islandia</option>
+          <option value="israel">Israel</option>
+          <option value="italia">Italia</option>
+          <option value="jamaica">Jamaica</option>
+          <option value="japao">Japao</option>
+          <option value="letonia">Letonia</option>
+          <option value="liechtenstein">Liechtenstein</option>
+          <option value="lituania">Lituania</option>
+          <option value="luxemburgo">Luxemburgo</option>
+          <option value="macedonia">Macedonia</option>
+          <option value="malta">Malta</option>
+          <option value="mexico">Mexico</option>
+          <option value="moldavia">Moldavia</option>
+          <option value="monaco">Monaco</option>
+          <option value="mongolia">Mongolia</option>
+          <option value="montenegro">Montenegro</option>
+          <option value="nicaragua">Nicaragua</option>
+          <option value="noruega">Noruega</option>
+          <option value="novazelandia">Nova Zelandia</option>
+          <option value="panama">Panama</option>
+          <option value="paquistao">Paquistao</option>
+          <option value="paraguai">Paraguai</option>
+          <option value="peru">Peru</option>
+          <option value="polonia">Polonia</option>
+          <option value="portugal">Portugal</option>
+          <option value="reinounido">Reino Unido</option>
+          <option value="republicadominicana">Republica Dominicana</option>
+          <option value="romenia">Romenia</option>
+          <option value="russia">Russia</option>
+          <option value="sanmarino">San Marino</option>
+          <option value="servia">Servia</option>
+          <option value="singapura">Singapura</option>
+          <option value="suecia">Suecia</option>
+          <option value="suica">Suica</option>
+          <option value="suriname">Suriname</option>
+          <option value="tailandia">Tailandia</option>
+          <option value="taiwan">Taiwan</option>
+          <option value="trindade">Trindade e Tobago</option>
+          <option value="tunisia">Tunisia</option>
+          <option value="turquia">Turquia</option>
+          <option value="ucrania">Ucrania</option>
+          <option value="uruguai">Uruguai</option>
+          <option value="venezuela">Venezuela</option>
+        </select>
+        <img id="bandeira2" class="bandeira" src="" alt="">
+      </div>
+
+      <button onclick="limparMarcacoes(2)">Limpar Draft</button>
+
+      <div class="picks-bans">
+        <div class="section-title">Gods</div>
+        <div class="item-grid god-grid" data-jogador="2"></div>
+
+        <div class="section-title">Maps</div>
+        <div class="item-grid map-grid" data-jogador="2"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
